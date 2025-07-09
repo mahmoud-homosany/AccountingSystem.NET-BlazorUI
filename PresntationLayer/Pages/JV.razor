@@ -1,0 +1,287 @@
+﻿@page "/JV"
+@using DTOS.ACC
+@using DTOS.JV
+@using DTOS.JVDetails
+@using DTOS.JvTypes
+@using DTOS.SubACC
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<div class="container border border-primary p-4 rounded">
+    <button class="btn btn-outline-primary  end-0 mb-3" @onclick="NavigateToSubAcc">Go to SubAccounts <i class="bi bi-chevron-right"></i></button>
+<h3 class="text-center  " style="background-color: darkblue ; color:aliceblue">JV</h3>
+    
+    <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-primary" @onclick="NewJV">New</button>
+       
+        <button class="btn btn-danger" @onclick="DeleteJV" disabled="@IsDisabled">Delete</button>
+        <button class="btn btn-primary" @onclick="SaveJV">Save</button>
+    </div>
+    <div style="display:flex">
+        <div style="margin-top:15px">
+            <button class="btn btn-outline-primary  m-2"  @onclick="LoadJVByNo"> <i class="bi bi-search"></i></button>
+        </div>
+        <div>
+            <label>Search By JVNo:</label>
+            <input class="form-control" type="number" @bind="SearchJvNo" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>Date:</label>
+            <input type="date" class="form-control" @bind="JvModel.Date" />
+        </div>
+        <div class="col-md-3">
+            <label>Trans. Type:</label>
+            <select class="form-select" @bind="JvModel.JVTypeId">
+                <option value="">-- Select Type --</option>
+                @foreach (var type in JvTypes)
+                {
+                    <option value="@type.Id">@type.JvtypeNameEn</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>JV No:</label>
+            <input class="form-control" @bind="JvModel.Jvno" readonly />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>Notes:</label>
+            <textarea class="form-control" @bind="JvModel.Notes"></textarea>
+        </div>
+    </div>
+
+    <!-- Table Details -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="table-primary">
+                <th>#</th>
+                <th>Account</th>
+                <th>SubAccount</th>
+                <th>Debit</th>
+                <th>Credit</th>
+                <th>Documented</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        @if (JvModel.Details != null && JvModel.Details.Count > 0)
+        {
+            <tbody>
+                @for (int i = 0; i < JvModel.Details.Count; i++)
+                {
+                    var row = JvModel.Details[i];
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>
+                            <select class="form-select" @bind="row.AccountId">
+                                <option value="">-- Select Account --</option>
+                                @foreach (var acc in Accounts)
+                                {
+                                    <option value="@acc.Id">@acc.AccountNameEn</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select" @bind="row.SubAccountId">
+                                <option value="">-- Select SubAccount --</option>
+                                @foreach (var sub in SubAccounts)
+                                {
+                                    <option value="@sub.Id">@sub.SubAccountNameEn</option>
+                                }
+                            </select>
+                        </td>
+                        <td><input class="form-control" type="number" step="0.01" @bind="row.Debit" /></td>
+                        <td><input class="form-control" type="number" step="0.01" @bind="row.Credit" /></td>
+                        <td><input class="form-control" @bind="row.DocumentNumber" /></td>
+                        <td><input class="form-control" @bind="row.Notes" /></td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+    <div class="mb-3">
+        <button class="btn btn-info" @onclick="AddNewRow">Add Row</button>
+    </div>
+    <!-- Totals -->
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label>Total Debit:</label>
+            <input class="form-control" readonly value="@TotalDebit" />
+        </div>
+        <div class="col-md-3">
+            <label>Total Credit:</label>
+            <input class="form-control" readonly value="@TotalCredit" />
+        </div>
+        <div class="col-md-3">
+            <label>Diff:</label>
+            <input class="form-control" readonly value="@Diff" />
+        </div>
+    </div>
+</div>
+
+@code {
+    bool IsDisabled => JvModel.Id == 0;
+    private JVCreateOrUpdateDTO JvModel = new();
+    private List<AccountGetAllDTO> Accounts = new();
+    private List<SubACCGetAllVM> SubAccounts = new();
+    private List<JvTyprsDTO> JvTypes = new();
+    private int SearchJvNo;
+    decimal TotalDebit => JvModel.Details.Sum(d => d.Debit);
+    decimal TotalCredit => JvModel.Details.Sum(d => d.Credit);
+    decimal Diff => Math.Abs(TotalDebit - TotalCredit);
+    protected override async Task OnInitializedAsync()
+    {
+        Accounts = await Http.GetFromJsonAsync<List<AccountGetAllDTO>>("http://localhost:5262/api/ACC");
+        SubAccounts = await Http.GetFromJsonAsync<List<SubACCGetAllVM>>("http://localhost:5262/api/SubAcc");
+        JvTypes = await Http.GetFromJsonAsync<List<JvTyprsDTO>>("http://localhost:5262/api/JvTypes");
+        NewJV();
+    }
+    async Task LoadJVByNo()
+    {
+        if (SearchJvNo <= 0)
+        {
+            await JS.InvokeVoidAsync("alert", "Enter a valid JV number.");
+            return;
+        }
+
+        try
+        {
+            var response = await Http.GetAsync($"http://localhost:5262/api/JV/GetByNo/{SearchJvNo}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jv = await response.Content.ReadFromJsonAsync<JVCreateOrUpdateDTO>();
+                if (jv != null)
+                {
+                    JvModel = jv;
+                    await JS.InvokeVoidAsync("alert", $"JV No: {SearchJvNo} loaded.");
+                }
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                await JS.InvokeVoidAsync("alert", $"Error: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", $"Exception: {ex.Message}");
+        }
+    }
+    void NewJV()
+    {
+        JvModel = new JVCreateOrUpdateDTO
+            {
+                Date = DateTime.Now,
+                BranchId = 1,
+                
+            // JVTypeId = 1
+            };
+
+        if (JvModel.Details == null)
+            JvModel.Details = new List<JVDetailCreateOrUpdateDTO>();
+        
+        JvModel.Details.Add(new JVDetailCreateOrUpdateDTO());
+    }
+    async Task SaveJV()
+    {
+        if (Diff != 0)
+        {
+            await JS.InvokeVoidAsync("alert", "Total Debit and Credit must be equal.");
+            return;
+        }
+
+        JvModel.TotalDebit = TotalDebit;
+        JvModel.TotalCredit = TotalCredit;
+
+        HttpResponseMessage response;
+
+        if (JvModel.Id == 0) 
+        {
+            response = await Http.PostAsJsonAsync("http://localhost:5262/api/JV", JvModel);
+        }
+        else 
+        {
+            response = await Http.PutAsJsonAsync($"http://localhost:5262/api/JV/{JvModel.Id}", JvModel);
+        }
+
+        if (response.IsSuccessStatusCode)
+        {
+            var savedJV = await response.Content.ReadFromJsonAsync<JVCreateOrUpdateDTO>();
+            JvModel = savedJV;
+            await JS.InvokeVoidAsync("alert", $"JV Saved Successfully. JV No: {JvModel.Jvno}");
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            await JS.InvokeVoidAsync("alert", $"Error: {error}");
+        }
+    }
+    void AddNewRow()
+    {
+        JvModel.Details.Add(new JVDetailCreateOrUpdateDTO());
+    }
+    void NavigateToSubAcc()
+    {
+        Navigation.NavigateTo("/SubAcc");
+    }
+   
+    async void UpdateJV()
+    {
+        if (JvModel.Id == 0)
+        {
+            await JS.InvokeVoidAsync("alert", "Please load an existing JV before updating.");
+            return;
+        }
+
+        if (Diff != 0)
+        {
+            await JS.InvokeVoidAsync("alert", "Total Debit and Credit must be equal.");
+            return;
+        }
+
+        JvModel.TotalDebit = TotalDebit;
+        JvModel.TotalCredit = TotalCredit;
+
+        var response = await Http.PutAsJsonAsync($"http://localhost:5262/api/JV/{JvModel.Id}", JvModel);
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "JV updated successfully.");
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            await JS.InvokeVoidAsync("alert", $"Error: {error}");
+        }
+    }
+
+    async void DeleteJV()
+    {
+        if (JvModel.Id == 0)
+        {
+            await JS.InvokeVoidAsync("alert", "No JV selected to delete.");
+            return;
+        }
+
+        bool confirmed = await JS.InvokeAsync<bool>("confirm", $"Are you sure you want to delete JV No: {JvModel.Jvno}?");
+        if (!confirmed)
+            return;
+
+        var response = await Http.DeleteAsync($"http://localhost:5262/api/JV/{JvModel.Id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await JS.InvokeVoidAsync("alert", "JV deleted successfully.");
+            NewJV(); 
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            await JS.InvokeVoidAsync("alert", $"Error: {error}");
+        }
+    }
+
+    
+}

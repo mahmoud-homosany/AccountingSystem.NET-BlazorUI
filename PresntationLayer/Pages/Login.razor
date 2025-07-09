@@ -1,0 +1,45 @@
+﻿@page "/"
+@page "/login"
+
+@inject NavigationManager Navigation
+
+<h3 class="text-center text-primary">Login</h3>
+
+<div class="container mt-4 border border-primary p-4 rounded" style="max-width: 400px;">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input class="form-control" @bind="Username" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" @bind="Password" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="alert alert-danger">@ErrorMessage</div>
+    }
+
+    <button class="btn btn-primary w-100" @onclick="HandleLogin">Login</button>
+</div>
+
+@code {
+    private string Username;
+    private string Password;
+    private string ErrorMessage;
+
+    private void HandleLogin()
+    {
+        if (Username == "admin" && Password == "1234")
+        {
+          
+            ErrorMessage = string.Empty;
+            Navigation.NavigateTo("/JV");
+        }
+        else
+        {
+            ErrorMessage = "Username or password is incorrect.";
+        }
+    }
+}

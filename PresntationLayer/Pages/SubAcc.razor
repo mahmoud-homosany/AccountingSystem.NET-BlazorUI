@@ -1,0 +1,313 @@
+﻿@page "/SubAcc"
+@using DTOS.SubACC
+@using DTOS.SubAccType
+@inject HttpClient Http
+@inject IJSRuntime JS
+<h3 style="color:darkblue ; text-align:center">Sub Accounts</h3>
+<NavLink class="btn btn-outline-primary mb-3" href="/JV">
+    &lt;
+    Back to JV
+</NavLink>
+
+<div class="row">
+    <div class="col-md-3 border-end">
+        <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-sm btn-primary" @onclick="CreateNewSubAccount">New</button>
+            <button class="btn btn-sm btn-primary" @onclick="EnableEdit" disabled="@(!CanEdit)">Update</button>
+            <button class="btn btn-sm btn-primary">AddRoot</button>
+            <button class="btn btn-sm btn-warning">Print</button>
+            <button class="btn btn-sm btn-danger" @onclick="DeleteSubAccount" disabled="@(!CanEdit)">Delete</button>
+        </div>
+
+
+        <ul class="list-group list-group-flush">
+            @foreach (var group in groupedAccounts)
+            {
+                <li class="list-group-item">
+                    <strong class="text-muted">@group.Key</strong>
+                    <ul class="list-unstyled ms-3">
+                        @foreach (var acc in group.Value)
+                        {
+                            <li style="cursor:pointer;" class="text-primary" @onclick="@(() => SelectAccount(acc))">
+                                @acc.SubAccountNumber - @acc.SubAccountNameEn
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+        @if (isNew)
+        {
+            <div class="card p-3 mb-3 border border-primary p-4 rounded">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Code:</label>
+                        <input class="form-control" @bind="newAccount.SubAccountNumber" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Name Ar:</label>
+                        <input class="form-control" @bind="newAccount.SubAccountNameAr" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Name En:</label>
+                        <input class="form-control" @bind="newAccount.SubAccountNameEn" />
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <label>Type:</label>
+                        <select class="form-select" @bind="newAccount.SubAccountTypeId">
+                            <option value="">-- Select Type --</option>
+                            @foreach (var type in subAccountTypes)
+                            {
+                                <option value="@type.Id">@type.SubAccountTypeNameEn</option>
+                            }
+                        </select>
+                    </div>
+                   
+                </div>
+                <button class="btn btn-primary mt-3" @onclick="SaveSubAccount">Save</button>
+            </div>
+        }
+       
+        else if  (selectedAccount != null)
+        {
+            <div class="card p-3 mb-3 border border-primary p-4 rounded">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Code:</label>
+                        <input class="form-control" @bind="selectedAccount.SubAccountNumber" readonly="@(!isNew)" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Name Ar:</label>
+                        <input class="form-control" @bind="selectedAccount.SubAccountNameAr" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Name En:</label>
+                        <input class="form-control" @bind="selectedAccount.SubAccountNameEn" readonly />
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <label>Type:</label>
+                        <select class="form-select" @bind="selectedAccount.SubAccountTypeId">
+                            <option value="">-- Select Type --</option>
+                            @foreach (var type in subAccountTypes)
+                            {
+                                <option value="@type.Id">@type.SubAccountTypeNameEn</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Branch:</label>
+                        <input class="form-control" @bind="selectedAccount.BranchName" readonly />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <ul class="nav nav-tabs mb-3 ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Accounts</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link">Details</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link">Contacts</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link">Cards</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link">Company Info</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link">Banks</button>
+                </li>
+            </ul>
+
+            <!-- Accounts Table -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Account Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>@selectedAccount.SubAccountNameEn</td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Select an account from the left to view details.</p>
+        }
+    </div>
+</div>
+
+@code {
+    bool isNew = false;
+    private List<SubACCGetAllVM> subAccounts = new();
+    private List<SubAccTypeDto> subAccountTypes = new();
+    private CreateOrUpdateVM newAccount = new();
+    private Dictionary<string, List<SubACCGetAllVM>> groupedAccounts = new();
+    private SubACCGetAllVM? selectedAccount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            subAccounts = await Http.GetFromJsonAsync<List<SubACCGetAllVM>>("http://localhost:5262/api/SubAcc");
+            subAccountTypes = await Http.GetFromJsonAsync<List<SubAccTypeDto>>("http://localhost:5262/api/SubAccType");
+            GroupAccounts();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching SubAccounts: {ex.Message}");
+        }
+    }
+    void CreateNewSubAccount()
+    {
+
+        isNew = true;
+        selectedAccount = null; 
+
+        newAccount = new CreateOrUpdateVM
+            {
+                SubAccountNameAr = "",
+                SubAccountNameEn = "New Account",
+                SubAccountTypeId = subAccountTypes.FirstOrDefault()?.Id ?? 1,
+                BranchId = 1,
+                IsMain = true
+            };
+        StateHasChanged();
+    }
+    bool CanEdit => selectedAccount != null && !isNew;
+
+    void EnableEdit()
+    {
+        if (selectedAccount != null)
+        {
+            isNew = true;
+
+            newAccount = new CreateOrUpdateVM
+                {
+                    Id = selectedAccount.Id,
+                    SubAccountNumber = selectedAccount.SubAccountNumber,
+                    SubAccountNameAr = selectedAccount.SubAccountNameAr,
+                    SubAccountNameEn = selectedAccount.SubAccountNameEn,
+                    SubAccountTypeId = selectedAccount.SubAccountTypeId,
+                    BranchId = selectedAccount.BranchId,
+                    IsMain = selectedAccount.IsMain
+                };
+        }
+    }
+    async Task DeleteSubAccount()
+    {
+        if (selectedAccount == null) return;
+
+        bool confirm = await JS.InvokeAsync<bool>("confirm", $"Are you sure you want to delete {selectedAccount.SubAccountNameEn}?");
+        if (!confirm) return;
+
+        try
+        {
+            var response = await Http.DeleteAsync($"http://localhost:5262/api/SubAcc/{selectedAccount.Id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                subAccounts.RemoveAll(x => x.Id == selectedAccount.Id);
+                selectedAccount = null;
+                GroupAccounts();
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Failed to delete: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting SubAccount: {ex.Message}");
+        }
+    }
+    async Task SaveSubAccount()
+    {
+        try
+        {
+            if (!IsValidAccount(newAccount))
+            {
+                await JS.InvokeVoidAsync("alert", "Please fill all required fields before saving.");
+                return;
+            }
+
+            newAccount.BranchId = 1;
+
+            HttpResponseMessage response;
+
+            if (newAccount.Id == 0)
+            {
+                response = await Http.PostAsJsonAsync("http://localhost:5262/api/SubAcc", newAccount);
+            }
+            else
+            {
+                response = await Http.PutAsJsonAsync($"http://localhost:5262/api/SubAcc/{newAccount.Id}", newAccount);
+            }
+
+            if (response.IsSuccessStatusCode)
+            {
+                var updated = await response.Content.ReadFromJsonAsync<SubACCGetAllVM>();
+
+                subAccounts.RemoveAll(x => x.Id == updated.Id);
+                subAccounts.Add(updated);
+                GroupAccounts();
+
+                selectedAccount = updated;
+                isNew = false;
+
+                await JS.InvokeVoidAsync("alert", newAccount.Id == 0
+                    ? "Account created successfully!"
+                    : "Account updated successfully!");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                await JS.InvokeVoidAsync("alert", $"Failed to save: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", $"Error saving SubAccount: {ex.Message}");
+        }
+    }
+
+    void GroupAccounts()
+    {
+        groupedAccounts = subAccounts
+            .Where(x => !string.IsNullOrWhiteSpace(x.SubAccountNumber) && x.SubAccountNumber.Length >= 2)
+            .GroupBy(x => x.SubAccountNumber.Substring(0, 2))
+            .ToDictionary(g => g.Key, g => g.ToList());
+    }
+    bool IsValidAccount(CreateOrUpdateVM account)
+    {
+        if (string.IsNullOrWhiteSpace(account.SubAccountNumber)) return false;
+        if (string.IsNullOrWhiteSpace(account.SubAccountNameAr)) return false;
+        if (string.IsNullOrWhiteSpace(account.SubAccountNameEn)) return false;
+        if (account.SubAccountTypeId == 0) return false;
+
+        return true;
+    }
+    void SelectAccount(SubACCGetAllVM account)
+    {
+        selectedAccount = account;
+        isNew = false;
+    }
+
+}

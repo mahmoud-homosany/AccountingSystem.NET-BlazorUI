@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\subacc.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\subacc.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\jv.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\jv.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Host.cshtml",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\_Host.cshtml",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\_Host.cshtml",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "PresntationLayer\\Pages\\_Host.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAuwBYAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:36:30.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.razor",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\Index.razor",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\Index.razor",
+              "RelativeToolTip": "PresntationLayer\\Pages\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:35:00.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.razor",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\Login.razor",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\Login.razor",
+              "RelativeToolTip": "PresntationLayer\\Pages\\Login.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:19:19.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SubAcc.razor",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\SubAcc.razor",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\SubAcc.razor",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\SubAcc.razor*",
+              "RelativeToolTip": "PresntationLayer\\Pages\\SubAcc.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:15:25.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JV.razor",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\JV.razor",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\JV.razor",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\JV.razor",
+              "RelativeToolTip": "PresntationLayer\\Pages\\JV.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAACSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:12:50.561Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

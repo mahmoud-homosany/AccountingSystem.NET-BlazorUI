@@ -1,0 +1,17 @@
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\EContext.deps.json
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\EContext.runtimeconfig.json
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\EContext.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\EContext.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.csproj.AssemblyReference.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.AssemblyInfoInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.AssemblyInfo.cs
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.csproj.CoreCompileInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\refint\EContext.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.genruntimeconfig.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\ref\EContext.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\Models.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\bin\Debug\net9.0\Models.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\EContext\obj\Debug\net9.0\EContext.csproj.Up2Date

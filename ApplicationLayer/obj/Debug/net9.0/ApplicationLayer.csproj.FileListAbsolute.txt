@@ -1,0 +1,17 @@
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.deps.json
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\ApplicationLayer.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.AssemblyInfoInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.AssemblyInfo.cs
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.csproj.CoreCompileInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\refint\ApplicationLayer.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ref\ApplicationLayer.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\DTOS.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\Models.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\DTOS.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\bin\Debug\net9.0\Models.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\ApplicationLayer.csproj.AssemblyReference.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\ApplicationLayer\obj\Debug\net9.0\Applicat.033E422A.Up2Date

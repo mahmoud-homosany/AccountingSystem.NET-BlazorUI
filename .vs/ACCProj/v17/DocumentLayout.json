@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|d:\\iti\\tasks \u0026 small projects\\small project\\accountanttask\\back-end\\accproj\\presntationlayer\\pages\\jv.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D141EA6-2EC7-455B-8877-8E1177CFB50F}|PresntationLayer\\PresntationLayer.csproj|solutionrelative:presntationlayer\\pages\\jv.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JV.razor",
+              "DocumentMoniker": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\JV.razor",
+              "RelativeDocumentMoniker": "PresntationLayer\\Pages\\JV.razor",
+              "ToolTip": "D:\\iti\\Tasks \u0026 Small Projects\\Small Project\\AccountantTask\\Back-End\\ACCProj\\PresntationLayer\\Pages\\JV.razor",
+              "RelativeToolTip": "PresntationLayer\\Pages\\JV.razor",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAAAHEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-08T23:12:50.561Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

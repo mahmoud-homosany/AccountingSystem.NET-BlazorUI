@@ -1,0 +1,11 @@
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\bin\Debug\net9.0\DTOS.deps.json
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\bin\Debug\net9.0\DTOS.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\bin\Debug\net9.0\DTOS.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.GeneratedMSBuildEditorConfig.editorconfig
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.AssemblyInfoInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.AssemblyInfo.cs
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.csproj.CoreCompileInputs.cache
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\refint\DTOS.dll
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\DTOS.pdb
+D:\iti\Tasks & Small Projects\Small Project\AccountantTask\Back-End\ACCProj\DTOS\obj\Debug\net9.0\ref\DTOS.dll
